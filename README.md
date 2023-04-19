@@ -18,3 +18,7 @@ pip install requirement.txt
 ~~~
 The `script` directory consist of the `preparation.py` and `reconstruct.py` scripts.
 The `share.txt` contain the generated secrets.
+
+
+# Future Work 
+- Planning on integrating this into a main vault program.
