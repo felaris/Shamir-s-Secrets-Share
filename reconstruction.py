@@ -2,7 +2,7 @@ import re
 
 # Read the shares from the text file
 shares = []
-with open('shares.txt', 'r') as file:
+with open('./shares.txt', 'r') as file:
     for line in file:
         match = re.match(r'Share (\d+): (\d+)', line)
         if match:
@@ -22,8 +22,4 @@ def interpolate(shares):
         total += y_i * numerator // denominator
     return total.to_bytes((total.bit_length() + 7) // 8, byteorder='big')
 
-if len(shares) >= k:
-    secret = interpolate(shares[:k])
-    print('Secret message:', secret.decode())
-else:
-    print('Not enough shares to reconstruct the secret')
+

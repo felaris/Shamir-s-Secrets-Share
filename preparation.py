@@ -27,16 +27,19 @@ for i in range(1, n+1):
     y = polynomial(x)
     shares.append((x, y))
 
-''' # Write the shares to a text file
+# Write the shares to a text file
 with open('shares.txt', 'w') as file:
-    for share in shares:'''
-        #file.write(f'Share {share[0]}: {share[1]}\n') 
+    for share in shares:
+        file.write(f'Share {share[0]}: {share[1]}\n') 
 
 # Print the shares
 for share in shares:
     print(f'Share {share[0]}: {share[1]}')
 
-''' 
+
+
+## Reconstruction
+
 
 from functools import reduce
 from operator import mul
@@ -57,7 +60,7 @@ def interpolate(x, shares):
             if j != m:
                 xm = share_m[0]
                 numerator *= (x - xm)
-                denominator *= (xm - xj)
+                denominator *= (xm - x)
         result += yj * (numerator / denominator)
     return result
 
@@ -68,4 +71,3 @@ reconstructed_secret = interpolate(0, shares_to_combine)
 print(f'Reconstructed secret: {reconstructed_secret.to_bytes((reconstructed_secret.bit_length() + 7) // 8, byteorder="big")}')
 
 
- '''
